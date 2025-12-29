@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stress Relief Suite for Aaru 💜 - Find Your Peace</title>
+    <meta name="description" content="A collection of beautiful stress-relief experiences designed for Aaru">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="menu-style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="main-title">
+                <span class="title-gradient">Stress Relief Suite</span>
+                <span class="title-sub">for Aaru 💜</span>
+            </h1>
+            <p class="subtitle">
+                Choose your path to peace and relaxation
+            </p>
+        </header>
+
+        <div class="games-grid">
+            <!-- Bubble Wrap Card -->
+            <div class="game-card" data-game="bubble-wrap">
+                <div class="card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10" />
+                        <circle cx="12" cy="12" r="6" />
+                        <circle cx="12" cy="12" r="2" />
+                    </svg>
+                </div>
+                <h2 class="card-title">Bubble Wrap</h2>
+                <p class="card-description">
+                    Pop satisfying bubbles with sounds and particle effects. Perfect for quick stress relief!
+                </p>
+                <div class="card-tags">
+                    <span class="tag">Interactive</span>
+                    <span class="tag">Satisfying</span>
+                    <span class="tag">Quick</span>
+                </div>
+                <button class="play-btn" onclick="openGame('index.html')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <polygon points="5 3 19 12 5 21 5 3" />
+                    </svg>
+                    Start Popping
+                </button>
+            </div>
+
+            <!-- Cosmic Meditation Card -->
+            <div class="game-card" data-game="meditation">
+                <div class="card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3" />
+                        <path d="M12 1v6m0 6v6" />
+                        <path d="M1 12h6m6 0h6" />
+                        <path d="m4.93 4.93 4.24 4.24m5.66 5.66 4.24 4.24" />
+                        <path d="m19.07 4.93-4.24 4.24m-5.66 5.66-4.24 4.24" />
+                    </svg>
+                </div>
+                <h2 class="card-title">Cosmic Meditation</h2>
+                <p class="card-description">
+                    A 60-second journey through the stars. Watch your worries shrink into the universe.
+                </p>
+                <div class="card-tags">
+                    <span class="tag">Mindful</span>
+                    <span class="tag">Calming</span>
+                    <span class="tag">60 Seconds</span>
+                </div>
+                <button class="play-btn" onclick="openGame('meditation.html')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <polygon points="5 3 19 12 5 21 5 3" />
+                    </svg>
+                    Begin Journey
+                </button>
+            </div>
+
+            <!-- Silk Art Card -->
+            <div class="game-card" data-game="silk">
+                <div class="card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2v20" />
+                        <path d="M2 12h20" />
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="m4.93 4.93 15.14 15.14" />
+                        <path d="m19.07 4.93-15.14 15.14" />
+                    </svg>
+                </div>
+                <h2 class="card-title">Silk Art</h2>
+                <p class="card-description">
+                    Draw beautiful symmetrical patterns. Express yourself through flowing, mesmerizing art.
+                </p>
+                <div class="card-tags">
+                    <span class="tag">Creative</span>
+                    <span class="tag">Meditative</span>
+                    <span class="tag">Beautiful</span>
+                </div>
+                <button class="play-btn" onclick="openGame('silk.html')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <polygon points="5 3 19 12 5 21 5 3" />
+                    </svg>
+                    Start Drawing
+                </button>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p class="footer-text">
+                Made with 💜 for Aaru<br>
+                <span class="footer-note">Remember: You are stronger than your stress</span>
+            </p>
+        </footer>
+    </div>
+
+    <script src="menu-script.js"></script>
+</body>
+
+</html>

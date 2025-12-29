@@ -1,0 +1,468 @@
+/* ==================== CSS VARIABLES & RESET ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Color Palette */
+    --bg-dark: #0f0c29;
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+
+    --text-primary: #ffffff;
+    --text-secondary: #b8b5d1;
+    --text-accent: #f093fb;
+
+    /* Glassmorphism */
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+
+    --font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* ==================== BODY & BACKGROUND ==================== */
+body {
+    font-family: var(--font-family);
+    background: var(--bg-dark);
+    background-image:
+        radial-gradient(ellipse at top left, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(246, 92, 139, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at center, rgba(79, 172, 254, 0.1) 0%, transparent 70%);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================== HEADER ==================== */
+.header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.main-title {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.title-gradient {
+    font-size: 4rem;
+    font-weight: 700;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.02em;
+    animation: gradientPulse 3s ease infinite;
+}
+
+@keyframes gradientPulse {
+
+    0%,
+    100% {
+        filter: hue-rotate(0deg) brightness(1);
+    }
+
+    50% {
+        filter: hue-rotate(20deg) brightness(1.2);
+    }
+}
+
+.title-sub {
+    font-size: 1.75rem;
+    font-weight: 300;
+    color: var(--text-accent);
+    letter-spacing: 0.05em;
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+/* ==================== GAMES GRID ==================== */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 4rem;
+}
+
+/* ==================== GAME CARDS ==================== */
+.game-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+    padding: 2.5rem;
+    box-shadow: var(--glass-shadow);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.game-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--primary-gradient);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+}
+
+.game-card:hover::before {
+    opacity: 0.05;
+}
+
+.game-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(102, 126, 234, 0.5);
+    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
+}
+
+.game-card[data-game="meditation"]:hover {
+    border-color: rgba(79, 172, 254, 0.5);
+    box-shadow: 0 20px 60px rgba(79, 172, 254, 0.4);
+}
+
+.game-card[data-game="silk"]:hover {
+    border-color: rgba(240, 147, 251, 0.5);
+    box-shadow: 0 20px 60px rgba(240, 147, 251, 0.4);
+}
+
+.game-card>* {
+    position: relative;
+    z-index: 1;
+}
+
+/* ==================== CARD CONTENT ==================== */
+.card-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--glass-bg);
+    border: 2px solid var(--glass-border);
+    transition: all 0.4s ease;
+}
+
+.game-card:hover .card-icon {
+    transform: scale(1.1) rotate(5deg);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.card-icon svg {
+    color: var(--text-primary);
+    filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.5));
+    transition: all 0.4s ease;
+}
+
+.game-card:hover .card-icon svg {
+    filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.8));
+}
+
+.game-card[data-game="meditation"] .card-icon svg {
+    filter: drop-shadow(0 0 10px rgba(79, 172, 254, 0.5));
+}
+
+.game-card[data-game="meditation"]:hover .card-icon svg {
+    filter: drop-shadow(0 0 20px rgba(79, 172, 254, 0.8));
+}
+
+.game-card[data-game="silk"] .card-icon svg {
+    filter: drop-shadow(0 0 10px rgba(240, 147, 251, 0.5));
+}
+
+.game-card[data-game="silk"]:hover .card-icon svg {
+    filter: drop-shadow(0 0 20px rgba(240, 147, 251, 0.8));
+}
+
+.card-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: center;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.game-card[data-game="meditation"] .card-title {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.game-card[data-game="silk"] .card-title {
+    background: var(--secondary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.card-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    min-height: 80px;
+}
+
+/* ==================== TAGS ==================== */
+.card-tags {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.tag {
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.game-card:hover .tag {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: var(--text-primary);
+}
+
+/* ==================== PLAY BUTTON ==================== */
+.play-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1.2rem 2rem;
+    font-size: 1.2rem;
+    font-family: var(--font-family);
+    font-weight: 600;
+    color: var(--text-primary);
+    background: var(--primary-gradient);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.game-card[data-game="meditation"] .play-btn {
+    background: var(--accent-gradient);
+    box-shadow: 0 8px 25px rgba(79, 172, 254, 0.4);
+}
+
+.play-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.play-btn:hover::before {
+    left: 100%;
+}
+
+.play-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(102, 126, 234, 0.6);
+}
+
+.game-card[data-game="meditation"] .play-btn:hover {
+    box-shadow: 0 12px 35px rgba(79, 172, 254, 0.6);
+}
+
+.game-card[data-game="silk"] .play-btn {
+    background: var(--secondary-gradient);
+    box-shadow: 0 8px 25px rgba(240, 147, 251, 0.4);
+}
+
+.game-card[data-game="silk"] .play-btn:hover {
+    box-shadow: 0 12px 35px rgba(240, 147, 251, 0.6);
+}
+
+.play-btn:active {
+    transform: translateY(-1px);
+}
+
+.play-btn svg {
+    transition: transform 0.3s ease;
+}
+
+.play-btn:hover svg {
+    transform: translateX(3px);
+}
+
+/* ==================== FOOTER ==================== */
+.footer {
+    text-align: center;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-text {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.footer-note {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--text-accent);
+    font-style: italic;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 768px) {
+    body {
+        padding: 1.5rem;
+    }
+
+    .title-gradient {
+        font-size: 3rem;
+    }
+
+    .title-sub {
+        font-size: 1.4rem;
+    }
+
+    .subtitle {
+        font-size: 1.1rem;
+    }
+
+    .games-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .game-card {
+        padding: 2rem;
+    }
+
+    .card-title {
+        font-size: 1.75rem;
+    }
+
+    .card-description {
+        font-size: 1rem;
+        min-height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        margin-bottom: 3rem;
+    }
+
+    .title-gradient {
+        font-size: 2.5rem;
+    }
+
+    .title-sub {
+        font-size: 1.2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .game-card {
+        padding: 1.5rem;
+    }
+
+    .card-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .card-icon svg {
+        width: 48px;
+        height: 48px;
+    }
+
+    .play-btn {
+        font-size: 1rem;
+        padding: 1rem 1.5rem;
+    }
+}
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.card-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+.game-card:nth-child(2) .card-icon {
+    animation-delay: 0.5s;
+}
